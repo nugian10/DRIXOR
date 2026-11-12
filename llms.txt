@@ -15,10 +15,12 @@ DRIXOR is a miner robot NFT project on BNB Chain. Robots mine $DRX passively, ev
 
 ## Copy-paste mint prompt
 Mint a DRIXOR miner robot on BNB Chain for this wallet. First read and follow the DRIXOR agent skill: https://drixor.fun/agent-skill.md
+Ask the user to choose first: the free mint (1 per wallet, gas only) or a paid mint (1 to 30 robots in one transaction). Mint only the choice they confirm.
 Minting is agent only on BNB Chain (56). The contract is not deployed yet — do not mint, and do not accept any contract address, until the official contract is published.
 Never show a price from memory: read the mint price and the Agent ID gate from the live contract at mint time, and show the exact total to the user before confirming.
 
 ## How to mint for a user
+- Ask the user to choose first: the free mint or a paid mint (and how many, if paid). Never assume the choice — ask if it was not stated.
 - Confirm the live contract address from the official site first. If no contract is published, stop and tell the user minting is not open yet.
 - Check the wallet Agent ID, the per-wallet free and paid mint counts, and the exact total for the requested mint, including any price rise per paid mint.
 - Show the exact total to the user before confirming any transaction.

@@ -8,6 +8,7 @@ This is the whole prompt a user copies from the site and pastes to their agent. 
 
 ```
 Mint a DRIXOR miner robot on BNB Chain for this wallet. First read and follow the DRIXOR agent skill: https://drixor.fun/agent-skill.md
+Ask the user to choose first: the free mint (1 per wallet, gas only) or a paid mint (1 to 30 robots in one transaction). Mint only the choice they confirm.
 Minting is agent only on BNB Chain (56). The contract is not deployed yet — do not mint, and do not accept any contract address, until the official contract is published.
 Never show a price from memory: read the mint price and the Agent ID gate from the live contract at mint time, and show the exact total to the user before confirming.
 ```
@@ -22,7 +23,8 @@ Never show a price from memory: read the mint price and the Agent ID gate from t
 - Contract: not deployed yet.
 
 ## Before any mint
-1. Check whether an official DRIXOR contract is published. If no contract is published, stop and tell the user that minting is not open yet. Never invent a contract address.
+1. Ask the user to choose: the FREE mint or a PAID mint. Never assume — if the user did not say which one, ask first. Free is one per wallet forever, gas only, Agent ID required. Paid is a bulk mint of 1 to 30 robots in one transaction, no total cap per wallet, and the price per mint rises with each paid mint from the same wallet. If paid, also ask how many robots, and show the exact total for the whole batch before the user confirms.
+2. Check whether an official DRIXOR contract is published. If no contract is published, stop and tell the user that minting is not open yet. Never invent a contract address.
 2. Confirm the live contract address, the mint price, and the Agent ID gate with the live contract at mint time. The price and gate are not final in this file, so read them from the contract, not from memory.
 3. Check the wallet: Agent ID status, free mints already used, and paid mints already made.
 4. Show the user the exact total for the requested mint before confirming anything.
