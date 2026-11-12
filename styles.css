@@ -307,6 +307,10 @@ h3 { font-size: 20px; }
 
 .footer-note { font-size: 14px; }
 
+.footer-x { margin-top: 12px; }
+.footer-x a { color: var(--gold); text-decoration: none; font-weight: 600; }
+.footer-x a:hover { text-decoration: underline; }
+
 @media (max-width: 760px) {
   .hero-inner { grid-template-columns: 1fr; padding-top: 32px; padding-bottom: 32px; }
   .hero h1 { font-size: 44px; }
