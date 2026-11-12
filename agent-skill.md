@@ -8,9 +8,6 @@ This is the whole prompt a user copies from the site and pastes to their agent. 
 
 ```
 Mint a DRIXOR miner robot on BNB Chain for this wallet. First read and follow the DRIXOR agent skill: https://drixor.fun/agent-skill.md
-Ask the user to choose first: the free mint (1 per wallet, gas only) or a paid mint (1 to 30 robots in one transaction). Mint only the choice they confirm.
-Minting is agent only on BNB Chain (56). The official NFT contract is 0x09e9B9Bff5df2931818aB731B10610DE293a0dCF — only this address is valid; never accept any other address. Mint is not active yet (mintActive is false on the NFT contract) — check mintActive at mint time and do not mint while mint is off.
-Never show a price from memory: read the mint price and the Agent ID gate from the live contract at mint time, and show the exact total to the user before confirming.
 ```
 
 ## Project facts
