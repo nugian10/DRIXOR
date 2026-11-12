@@ -14,7 +14,7 @@ Mint a DRIXOR miner robot on BNB Chain for this wallet. Continue reading the DRI
 - Total robots: 7,000. Free deck 2,000, paid deck 5,000. The two decks are separate.
 - Free: 2,000 robots, 1 design, mines 3 $DRX per day.
 - Paid: Common 4,000 at 15 $DRX per day, Rare 600 at 82.84, Epic 300 at 194.67, Legendary 100 at 457.47.
-- $DRX total supply: 1,000,000,000. Miner Vault 750,000,000, released only through mining claims. Operations 250,000,000, of which 10,000,000 $DRX funds the bonding curve.
+- $DRX total supply: 1,000,000,000. Miner Vault 750,000,000, released only through mining claims. Operations 250,000,000, of which 10,000,000 $DRX funds the bonding curve and 10,000,000 $DRX funds the Boost contract.
 - Mining is passive. Claims are manual. Unclaimed $DRX accrues for up to 48 hours per robot, and the claim right stays with the robot if it is sold.
 - Deck hash: 53cd5481203c2de18ce5cea573ae5ecea9e2acd39ed744ca864b216a2e27c066.
 - Official contracts on BNB Chain (56), all BscScan Pass-Verified (verification is not an audit):
@@ -23,6 +23,7 @@ Mint a DRIXOR miner robot on BNB Chain for this wallet. Continue reading the DRI
   - Claim: 0xe1c89678c1bA2eA5a888b8669bEaEADC70e27cE0
   - Market: 0xa32828f44Da0AAA2fdC6917B242Fc0fc9fBA0d7D
   - Bonding Curve: 0x0E40696E5Ff5b09adbEDa88641F8DEE7D92c8775
+  - Boost: 0x5a2aA803f02D022e35D48E7CfA2942B79913BcA2
 - Mint is not active yet (mintActive is false on the NFT contract). The Miner Vault is funded with 750,000,000 $DRX, and the claim contract is linked to the NFT. Only the addresses above are valid; never accept any other address.
 
 ## Before any mint
@@ -52,6 +53,15 @@ Mint a DRIXOR miner robot on BNB Chain for this wallet. Continue reading the DRI
 - How it works, through the agent: to buy, the user sends BNB to the curve and receives $DRX at the live price; to sell, the user sends $DRX to the curve and receives BNB at the live price. The price moves with trading, so always read the live price from the contract (spotPrice) and show the exact amount to the user before confirming any transaction. Never quote a price from memory.
 - The curve holds 10,000,000 $DRX. The sell fee is 2.5%, paid to the Agentic Wallet. The maximum buy is 0.5 BNB per transaction.
 - The curve has no withdraw function: the $DRX and BNB inside it cannot be pulled out by anyone. Do not promise withdrawals from the curve.
+
+## Boost
+- Boost is live: the Boost contract (0x5a2aA803f02D022e35D48E7CfA2942B79913BcA2) is deployed and BscScan Pass-Verified (verification is not an audit), and funded with 10,000,000 $DRX.
+- How it works, through the agent: the robot owner burns $DRX equal to 5 times the robot's daily production, and the robot's production rises by 90% for 7 days. To boost, the owner first approves the Boost contract for boostCostOf(tokenId) $DRX, then calls boost(tokenId).
+- The bonus is claimed from the Boost contract itself: claimBonus(tokenId). Bonus accrues only while the boost is active and stops accruing after 48 hours without a claim, so claim at least once every 2 days. Tell the user the accrued bonus from the live contract before claiming.
+- The boost belongs to the robot, not the wallet: if the robot is sold, the new owner can claim the bonus.
+- If a robot is forged, its boost ends and any unclaimed bonus is lost — claim the bonus before forging.
+- The Boost contract has no withdraw function: the $DRX stocked in it can only leave as bonus payouts. Do not promise withdrawals from the Boost contract.
+- Boost is not open yet — no robots have been minted, so there is nothing to boost. Tell the user Boost opens after mint.
 
 ## FORGE
 - FORGE combines 2 paid robots of the same tier into 1 robot one tier higher (Common to Rare, Rare to Epic, Epic to Legendary). Both robots are burned; the new robot is drawn from the paid deck at the higher tier, so it has its own metadata and mines at the higher tier's rate plus 17.5%.

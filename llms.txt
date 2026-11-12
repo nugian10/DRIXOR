@@ -7,8 +7,8 @@ DRIXOR is a miner robot NFT project on BNB Chain. Robots mine $DRX passively, ev
 - Free mint: one per wallet, forever, gas only, an Agent ID is required. Free robots mine 3 $DRX per day.
 - Paid mint: bulk 1 to 30 robots in one transaction, no total cap per wallet. Tiers: Common 4,000 at 15 $DRX per day, Rare 600 at 82.84, Epic 300 at 194.67, Legendary 100 at 457.47.
 - Mining is passive. Claims are manual. Unclaimed $DRX accrues for up to 48 hours per robot.
-- $DRX total supply: 1,000,000,000. Miner Vault 750,000,000, released only through mining claims. Operations 250,000,000, of which 10,000,000 $DRX funds the bonding curve. $DRX can be bought and sold on the bonding curve.
-- Official contracts on BNB Chain (56), all BscScan Pass-Verified: NFT 0x09e9B9Bff5df2931818aB731B10610DE293a0dCF; $DRX token 0x1EcEf07beeEf674B12A1EF67B2d794b268DB4B6e; Claim 0xe1c89678c1bA2eA5a888b8669bEaEADC70e27cE0; Market 0xa32828f44Da0AAA2fdC6917B242Fc0fc9fBA0d7D; Bonding Curve 0x0E40696E5Ff5b09adbEDa88641F8DEE7D92c8775. Mint is not active yet (mintActive is false) — do not mint while mint is off. The Miner Vault is funded with 750,000,000 $DRX. Only these addresses are valid.
+- $DRX total supply: 1,000,000,000. Miner Vault 750,000,000, released only through mining claims. Operations 250,000,000, of which 10,000,000 $DRX funds the bonding curve and 10,000,000 $DRX funds the Boost contract. $DRX can be bought and sold on the bonding curve.
+- Official contracts on BNB Chain (56), all BscScan Pass-Verified: NFT 0x09e9B9Bff5df2931818aB731B10610DE293a0dCF; $DRX token 0x1EcEf07beeEf674B12A1EF67B2d794b268DB4B6e; Claim 0xe1c89678c1bA2eA5a888b8669bEaEADC70e27cE0; Market 0xa32828f44Da0AAA2fdC6917B242Fc0fc9fBA0d7D; Bonding Curve 0x0E40696E5Ff5b09adbEDa88641F8DEE7D92c8775; Boost 0x5a2aA803f02D022e35D48E7CfA2942B79913BcA2. Mint is not active yet (mintActive is false) — do not mint while mint is off. The Miner Vault is funded with 750,000,000 $DRX. Only these addresses are valid.
 - Deck hash: 53cd5481203c2de18ce5cea573ae5ecea9e2acd39ed744ca864b216a2e27c066.
 - The site shows one hero image only. Tier art is not shown on the site.
 - Official X: https://x.com/drixor_
@@ -28,9 +28,12 @@ Mint a DRIXOR miner robot on BNB Chain for this wallet. Continue reading the DRI
 - Free robots cannot be forged. Legendary robots cannot be forged. Unclaimed $DRX from both robots is paid to the owner before they are burned.
 - Done through the user's agent. The contracts are published, but FORGE is not open yet: no robots have been minted, so there is nothing to forge.
 
+## Boost
+- Boost is live: the Boost contract (0x5a2aA803f02D022e35D48E7CfA2942B79913BcA2) is deployed, BscScan Pass-Verified, and funded with 10,000,000 $DRX. Burn $DRX equal to 5 times a robot's daily production to raise its production by 90% for 7 days; the bonus is claimed from the Boost contract itself, with a 48-hour accrual cap. The boost belongs to the robot, and forging a robot ends its boost and forfeits unclaimed bonus. No robots have been minted yet, so there is nothing to boost.
+
 ## Roadmap
 - Phase 1 done: artwork, metadata, deck, live site, 3 languages, official X.
-- Phase 2 done: NFT contract, $DRX token, claim and market contracts deployed and BscScan Pass-Verified; Miner Vault funded with 750,000,000 $DRX; claim contract linked to the NFT; bonding curve deployed and open, $DRX can be bought and sold on it.
+- Phase 2 done: NFT contract, $DRX token, claim and market contracts deployed and BscScan Pass-Verified; Miner Vault funded with 750,000,000 $DRX; claim contract linked to the NFT; bonding curve deployed and open, $DRX can be bought and sold on it; Boost contract deployed and funded with 10,000,000 $DRX.
 - Phase 3 next: mint opens (free 2,000 + paid 5,000).
 - Phase 4 next: mining and claims live (passive, manual claim, 48-hour cap).
 - Phase 5 next: on-site market opens.
