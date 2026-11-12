@@ -491,8 +491,16 @@ h3 { font-size: 22px; font-weight: 800; }
   .hero h1 { font-size: 44px; }
   .tagline { font-size: 20px; }
   .hero-art img { border-radius: 0; }
-  .status-grid { grid-template-columns: 1fr 1fr; }
-  .stat-value { font-size: 24px; }
+  /* Stat grid on phones: no stretch — each card hugs its own content,
+     tighter padding/gap so the cards stop looking empty and tall. */
+  .status-grid { grid-template-columns: 1fr 1fr; align-items: start; gap: 12px; padding-top: 24px; padding-bottom: 24px; }
+  .stat { padding: 14px 16px; }
+  .stat-value { font-size: 20px; line-height: 1.15; min-width: 0; }
+  .stat-label { margin-top: 6px; }
+  /* Deck hash on phones: one truncated line with ellipsis. The full
+     64-character value stays untouched in the HTML; only the display
+     is shortened. */
+  .stat-hash { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; word-break: normal; }
   .steps { grid-template-columns: 1fr; }
   .two-col { grid-template-columns: 1fr; }
   .three-col { grid-template-columns: 1fr; }
