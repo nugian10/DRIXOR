@@ -494,11 +494,18 @@ h3 { font-size: 22px; font-weight: 800; }
   .hero h1 { font-size: 44px; }
   .tagline { font-size: 20px; }
   .hero-art img { border-radius: 0; }
+  /* Hero buttons: full-width stacked tap targets, so the two buttons
+     never sit cramped side by side on a narrow screen. */
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; text-align: center; }
   /* Stat grid on phones: no stretch — each card hugs its own content,
      tighter padding/gap so the cards stop looking empty and tall. */
   .status-grid { grid-template-columns: 1fr 1fr; align-items: start; gap: 12px; padding-top: 24px; padding-bottom: 24px; }
-  .stat { padding: 14px 16px; }
+  .stat { padding: 14px 16px; min-width: 0; }
   .stat-value { font-size: 20px; line-height: 1.15; min-width: 0; }
+  /* Minted value ("0 / 7,000") never breaks mid-number; the full-width
+     .stat-wide row keeps it on one clean line. */
+  #minted-value { white-space: nowrap; }
   .stat-label { margin-top: 6px; }
   /* Deck hash on phones: one truncated line with ellipsis. The full
      64-character value stays untouched in the HTML; only the display
@@ -509,9 +516,25 @@ h3 { font-size: 22px; font-weight: 800; }
   .three-col { grid-template-columns: 1fr; }
   .section { padding: 40px 0; }
   h2 { font-size: 26px; }
-  .topbar-inner { gap: 8px 10px; }
-  .logo { font-size: 20px; }
-  .lang-switch button { padding: 8px 8px; font-size: 12px; }
+  /* Tables: bleed to the screen edges so the horizontal scroll area is
+     as wide as possible, with tighter cells and touch scrolling. */
+  .table-scroll { margin: 24px -20px 0; padding: 0 20px; -webkit-overflow-scrolling: touch; }
+  .tiers-table th, .tiers-table td { padding: 12px; }
+  .tiers-table td:nth-child(2) { font-size: 13px; }
+  /* Topbar: tightened so logo + EN/日本語/中文 + hamburger stay on one
+     row even on a 320px screen instead of wrapping. */
+  .topbar-inner { gap: 8px; }
+  .logo { font-size: 18px; letter-spacing: 1px; }
+  .lang-switch button { padding: 6px 6px; font-size: 11px; min-height: 40px; }
+  .nav-toggle-btn { min-width: 40px; min-height: 40px; }
+  /* Prompt block: slimmer padding and text so it fits a phone screen;
+     copy button becomes a full-width tap target. */
+  .prompt { padding: 16px; font-size: 13px; }
+  #copy-prompt-btn { width: 100%; text-align: center; }
+  /* Cards: slightly tighter padding on phones, big token numbers smaller. */
+  .card { padding: 20px; }
+  .faq-item { padding: 16px 20px; }
+  .big { font-size: 26px; }
   /* Hamburger: button visible, nav hidden until the checkbox is on */
   .nav-toggle-btn { display: inline-block; }
   .nav {
