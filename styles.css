@@ -1,7 +1,13 @@
-/* DRIXOR — industrial mining look.
-   Charcoal / gunmetal + molten-orange accent. No gold, no blue.
-   Sharp 6px corners, uppercase headings, monospace technical numbers.
-   Hazard stripes appear only twice: under the hero, above the footer. */
+/* DRIXOR — industrial mining look, round 2.
+   Gunmetal + molten-orange accent. No gold, no blue.
+   Visual language adapted from the pheromoneprotocol.xyz/collection
+   reference (structure only, not its theme): square corners (radius 0),
+   hard offset shadows on buttons, three-font hierarchy
+   (heavy grotesk headings / neutral sans body / mono uppercase labels),
+   hairline dividers + orange dot rows, wide container.
+   DRIXOR's own identity: gunmetal #17191d background, molten-orange
+   #ff7a1a accent, steel-grey shadows — NOT Pheromone's brown-black,
+   amber, and no insect motif anywhere. */
 
 :root {
   --bg: #17191d;
@@ -31,18 +37,20 @@ body {
   font-size: 16px;
 }
 
+/* Wide container, Pheromone-style. */
 .wrap {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 a { color: var(--link); }
 
-h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
+/* (1) Headings: heavy grotesk, sentence-case, tight line-height. */
+h1, h2, h3 { line-height: 1.05; margin: 0 0 12px; font-weight: 900; }
 
-h2 { font-size: 30px; text-transform: uppercase; letter-spacing: 1.5px; }
-h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
+h2 { font-size: 36px; }
+h3 { font-size: 22px; font-weight: 800; }
 
 .topbar {
   position: sticky;
@@ -65,7 +73,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
 .logo {
   color: var(--accent);
-  font-weight: 800;
+  font-weight: 900;
   font-size: 22px;
   letter-spacing: 2px;
   text-decoration: none;
@@ -73,12 +81,15 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
 .nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
 
+/* (3) Labels: mono, uppercase, wide letter-spacing, small. */
 .nav a {
   color: var(--text);
   text-decoration: none;
-  font-size: 15px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.2em;
 }
 
 .nav a:hover { color: var(--accent); }
@@ -94,13 +105,14 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
   background: transparent;
   color: var(--text);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 8px 12px;
-  font-size: 13px;
+  font-family: var(--mono);
+  font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.15em;
   cursor: pointer;
   min-height: 44px;
-  font-family: inherit;
 }
 
 .lang-switch button:hover { border-color: var(--accent); color: var(--accent); }
@@ -115,12 +127,14 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
   border-bottom: none;
 }
 
-/* Hazard stripe under the hero — one of only two on the site. */
+/* Orange dot row under the hero. */
 .hero::after {
   content: "";
   display: block;
-  height: 6px;
-  background: repeating-linear-gradient(45deg, var(--accent) 0 12px, #17191d 12px 24px);
+  height: 5px;
+  background-image: radial-gradient(circle at 2px 50%, var(--accent) 2px, transparent 2.5px);
+  background-size: 14px 5px;
+  background-repeat: repeat-x;
 }
 
 .hero-inner {
@@ -134,27 +148,36 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
 .eyebrow {
   color: var(--accent);
+  font-family: var(--mono);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 13px;
+  letter-spacing: 0.25em;
+  font-size: 12px;
   font-weight: 700;
-  margin: 0 0 8px;
+  margin: 0 0 12px;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  margin-right: 10px;
 }
 
 .hero h1 {
-  font-size: 72px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  margin-bottom: 4px;
+  font-size: 76px;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
 }
 
 .tagline {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   color: var(--accent);
   margin: 0 0 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  line-height: 1.15;
 }
 
 .lede { color: var(--muted); margin: 0 0 24px; }
@@ -165,55 +188,92 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 6px;
+  border-radius: 0;
   border: 1px solid var(--line);
+  box-shadow: 6px 6px 0 #343a44;
 }
 
+/* Hard offset shadows on buttons (orange-dark for the solid button,
+   steel for the ghost button). */
 .btn {
   display: inline-block;
   padding: 12px 22px;
-  border-radius: 6px;
+  border-radius: 0;
+  font-family: var(--mono);
   font-weight: 700;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.2em;
+  box-shadow: 5px 5px 0 #343a44;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-.btn-gold { background: var(--accent); color: #1a0e00; }
-.btn-gold:hover { background: var(--accent-dark); }
-.btn-ghost { border: 1px solid var(--line); color: var(--text); }
+.btn:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 #343a44; }
+.btn:active { transform: translate(5px, 5px); box-shadow: 0 0 0 #343a44; }
+
+.btn-gold { background: var(--accent); color: #1a0e00; box-shadow: 5px 5px 0 var(--accent-dark); }
+.btn-gold:hover { background: var(--accent-dark); box-shadow: 3px 3px 0 var(--accent-dark); }
+.btn-ghost { border: 1px solid var(--line); color: var(--text); background: var(--bg); }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-.status { border-bottom: 1px solid var(--line); }
-
+/* Stat grid: 2x2 on desktop, big bold number on top, small mono label
+   below — the Pheromone pattern, in DRIXOR's own colors. */
 .status-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.stat {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  order: 1;
+  font-weight: 900;
+  font-size: 32px;
+  font-family: var(--mono);
+  line-height: 1.1;
 }
 
 .stat-label {
+  order: 2;
   display: block;
-  font-size: 13px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.2em;
   color: var(--muted);
-  margin-bottom: 4px;
+  margin-top: 8px;
 }
 
-.stat-value { font-weight: 700; font-size: 18px; font-family: var(--mono); }
+.stat-label::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  margin-right: 8px;
+}
 
 .stat-hash {
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 700;
   font-family: var(--mono);
   word-break: break-all;
 }
 
-.section { padding: 56px 0; }
-.section-dark { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+/* Hairline divider above every section. */
+.section { padding: 48px 0; border-top: 1px solid var(--line); }
+.section-dark { background: var(--bg-2); border-bottom: 1px solid var(--line); }
 
 .section-intro { color: var(--muted); max-width: 720px; }
 
@@ -230,7 +290,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 .steps li {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 20px;
   counter-increment: step;
 }
@@ -242,7 +302,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
   height: 34px;
   line-height: 34px;
   text-align: center;
-  border-radius: 6px;
+  border-radius: 0;
   background: var(--accent);
   color: #1a0e00;
   font-size: 18px;
@@ -258,7 +318,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
   width: 100%;
   border-collapse: collapse;
   background: var(--card);
-  border-radius: 6px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -269,7 +329,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
   border-bottom: 1px solid var(--line);
 }
 
-.tiers-table th { color: var(--accent); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+.tiers-table th { color: var(--accent); font-family: var(--mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; }
 /* Supply, share, and daily rate in monospace — the tier name stays normal. */
 .tiers-table td:nth-child(2),
 .tiers-table td:nth-child(3),
@@ -289,7 +349,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 .card {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 24px;
 }
 
@@ -301,7 +361,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
 .big {
   font-size: 30px;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--accent);
   margin: 0 0 8px;
   font-family: var(--mono);
@@ -312,7 +372,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 .faq-item {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 20px 24px;
 }
 
@@ -321,7 +381,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 .prompt {
   background: #101215;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 20px;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -336,13 +396,13 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
   color: var(--muted);
 }
 
-/* Hazard stripe above the footer — the second of only two on the site. */
+/* Hairline above the footer. */
 .footer::before {
   content: "";
   display: block;
-  height: 6px;
+  height: 1px;
+  background: var(--line);
   margin-bottom: 32px;
-  background: repeating-linear-gradient(45deg, var(--accent) 0 12px, #17191d 12px 24px);
 }
 
 .footer-note { font-size: 14px; }
@@ -361,7 +421,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
   background: transparent;
   color: var(--text);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   min-width: 44px;
   min-height: 44px;
   font-size: 22px;
@@ -377,14 +437,14 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
 /* Sub-pages */
 .page-head { padding-top: 40px; }
-.page-head h1 { font-size: 40px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2px; }
+.page-head h1 { font-size: 40px; margin-bottom: 8px; letter-spacing: 0; }
 
 .phase-list { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 16px; }
 
 .phase {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 20px 24px;
 }
 
@@ -393,11 +453,12 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
 .phase-status {
   display: inline-block;
-  font-size: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  border-radius: 6px;
+  border-radius: 0;
   padding: 4px 12px;
   margin-bottom: 10px;
 }
@@ -408,7 +469,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 .market-status {
   background: var(--card);
   border: 1px solid var(--accent);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 20px 24px;
   margin: 24px 0;
 }
@@ -423,14 +484,15 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 .market-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 32px; }
 .market-actions .note { margin: 0; width: 100%; }
 
-.btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.btn[disabled] { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
 
 @media (max-width: 760px) {
   .hero-inner { grid-template-columns: 1fr; padding-top: 32px; padding-bottom: 32px; }
-  .hero h1 { font-size: 48px; }
+  .hero h1 { font-size: 44px; }
   .tagline { font-size: 20px; }
-  .hero-art img { border-radius: 6px; }
+  .hero-art img { border-radius: 0; }
   .status-grid { grid-template-columns: 1fr 1fr; }
+  .stat-value { font-size: 24px; }
   .steps { grid-template-columns: 1fr; }
   .two-col { grid-template-columns: 1fr; }
   .three-col { grid-template-columns: 1fr; }
@@ -449,7 +511,7 @@ h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
     padding: 4px 0 8px;
   }
   .nav-toggle:checked ~ .nav { display: flex; }
-  .nav a { padding: 12px 4px; min-height: 44px; border-top: 1px solid var(--line); font-size: 16px; }
+  .nav a { padding: 12px 4px; min-height: 44px; border-top: 1px solid var(--line); font-size: 12px; }
   .page-head { padding-top: 28px; }
   .page-head h1 { font-size: 32px; }
   .phase { padding: 16px 20px; }
