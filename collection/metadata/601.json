@@ -1,0 +1,23 @@
+{
+  "name": "DRIXOR #601",
+  "description": "DRIXOR \u2014 a miner robot NFT on BNB Chain. It mines $DRX passively every day; claim your $DRX from your robot.",
+  "image": "https://raw.githubusercontent.com/nugian10/DRIXOR/main/collection/images/free.png",
+  "attributes": [
+    {
+      "trait_type": "Rarity",
+      "value": "Free"
+    },
+    {
+      "trait_type": "Design",
+      "value": "free"
+    },
+    {
+      "trait_type": "Daily Rate ($DRX)",
+      "value": 3
+    },
+    {
+      "trait_type": "Mining",
+      "value": "Passive"
+    }
+  ]
+}
