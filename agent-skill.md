@@ -47,7 +47,7 @@ Never show a price from memory: read the mint price and the Agent ID gate from t
 ## On-site market
 - The market lives on this site (market.html). It is NOT open yet: no robots have been minted, so nothing is listed. Do not invent listings, prices, or sales.
 - When the market contract exists, owners list a robot at a BNB price through their agent, buyers buy through their agent, and a listing can be cancelled by its owner any time before it sells. Unclaimed $DRX moves with the robot when it is sold.
-- A marketplace fee and a creator royalty will apply. The rates are announced with the market contract — never quote a rate from memory.
+- There is no marketplace fee. A creator royalty of 5% applies on every sale, paid to the Agentic Wallet; the seller keeps 95%.
 - Until the market contract is published, tell the user the market is not open yet.
 
 ## What not to do
