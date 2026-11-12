@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n-title="mk.meta.title">Market — DRIXOR</title>
+<meta name="description" data-i18n-desc="mk.meta.desc" content="The DRIXOR on-site market. Buy and sell miner robots here when mint opens.">
+<link rel="stylesheet" href="styles.css">
+<script src="i18n.js" defer></script>
+<script src="nav.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="logo" href="index.html">DRIXOR</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="active">EN</button>
+      <button type="button" data-lang="ja">日本語</button>
+      <button type="button" data-lang="zh">中文</button>
+    </div>
+    <input class="nav-toggle" type="checkbox" id="nav-toggle" tabindex="-1" aria-hidden="true">
+    <label class="nav-toggle-btn" for="nav-toggle" aria-label="Menu" aria-expanded="false" data-i18n-aria="nav.menu">☰</label>
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="index.html#how" data-i18n="nav.how">How it works</a>
+      <a href="index.html#tiers" data-i18n="nav.tiers">Tiers</a>
+      <a href="index.html#mint" data-i18n="nav.mint">Mint</a>
+      <a href="index.html#token" data-i18n="nav.token">$DRX</a>
+      <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="index.html#agents" data-i18n="nav.agents">Agents</a>
+      <a href="roadmap.html" data-i18n="nav.roadmap">Roadmap</a>
+      <a href="market.html" data-i18n="nav.market">Market</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section page-head">
+    <div class="wrap">
+      <h1 data-i18n="mk.h1">Market</h1>
+      <p class="section-intro" data-i18n="mk.intro">Buy and sell DRIXOR robots right here — on this site, no outside marketplace needed.</p>
+
+      <div class="market-status">
+        <h2 data-i18n="mk.status_h">No robots listed yet</h2>
+        <p data-i18n="mk.status_p">No robots have been minted yet, so there is nothing to list. The market opens after mint.</p>
+      </div>
+
+      <h2 data-i18n="mk.how_h">How the market will work</h2>
+      <div class="three-col">
+        <div class="card">
+          <h3 data-i18n="mk.list_h">List a robot</h3>
+          <p data-i18n="mk.list_p">Owners list a robot at a price in BNB, through their agent.</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="mk.buy_h">Buy a robot</h3>
+          <p data-i18n="mk.buy_p">Buyers buy through their agent. The robot moves to the buyer, and any unclaimed $DRX moves with it.</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="mk.cancel_h">Cancel a listing</h3>
+          <p data-i18n="mk.cancel_p">A listing can be cancelled by its owner any time before it sells.</p>
+        </div>
+      </div>
+
+      <div class="card fee-card">
+        <h3 data-i18n="mk.fee_h">Fees</h3>
+        <p data-i18n="mk.fee_p">A marketplace fee and a creator royalty will apply. The rates will be announced together with the market contract — no numbers are set yet.</p>
+      </div>
+
+      <div class="market-actions">
+        <button type="button" class="btn btn-gold" disabled data-i18n="mk.btn_list">List a robot</button>
+        <button type="button" class="btn btn-ghost" disabled data-i18n="mk.btn_browse">Browse listings</button>
+        <p class="note" data-i18n="mk.btn_note">Listings open after mint. These buttons do not work yet.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p data-i18n="footer.p1">DRIXOR — miner robots on BNB Chain. Mint, hold, mine $DRX.</p>
+    <p class="footer-x"><a href="https://x.com/drixor_" target="_blank" rel="noopener" data-i18n="footer.x">Official X — @drixor_</a></p>
+    <p class="footer-note" data-i18n="footer.note">Contract not deployed yet. Minting opens only after the official contract is published.</p>
+  </div>
+</footer>
+</body>
+</html>

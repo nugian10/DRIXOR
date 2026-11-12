@@ -311,17 +311,107 @@ h3 { font-size: 20px; }
 .footer-x a { color: var(--gold); text-decoration: none; font-weight: 600; }
 .footer-x a:hover { text-decoration: underline; }
 
+/* Hamburger (mobile only). The toggle is a checkbox, so the menu opens
+   without JavaScript: the label flips the checkbox and CSS shows the
+   panel. nav.js only adds close-on-click, Escape, and aria-expanded. */
+.nav-toggle { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+
+.nav-toggle-btn {
+  display: none;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 22px;
+  line-height: 1;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-family: inherit;
+  flex: none;
+  text-align: center;
+}
+
+.nav-toggle-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Sub-pages */
+.page-head { padding-top: 40px; }
+.page-head h1 { font-size: 40px; margin-bottom: 8px; }
+
+.phase-list { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 16px; }
+
+.phase {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.phase h2 { font-size: 20px; margin-bottom: 6px; }
+.phase p { color: var(--muted); margin: 0; }
+
+.phase-status {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+}
+
+.phase-done .phase-status { background: var(--gold); color: #1a1400; }
+.phase-next .phase-status { border: 1px solid var(--line); color: var(--muted); }
+
+.market-status {
+  background: var(--card);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+
+.market-status h2 { margin-bottom: 6px; }
+.market-status p { color: var(--muted); margin: 0; }
+
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+
+.fee-card { margin-top: 16px; }
+
+.market-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 32px; }
+.market-actions .note { margin: 0; width: 100%; }
+
+.btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+
 @media (max-width: 760px) {
   .hero-inner { grid-template-columns: 1fr; padding-top: 32px; padding-bottom: 32px; }
   .hero h1 { font-size: 44px; }
   .tagline { font-size: 20px; }
+  .hero-art img { border-radius: 12px; }
   .status-grid { grid-template-columns: 1fr 1fr; }
   .steps { grid-template-columns: 1fr; }
   .two-col { grid-template-columns: 1fr; }
+  .three-col { grid-template-columns: 1fr; }
   .section { padding: 40px 0; }
   h2 { font-size: 26px; }
-  .nav { gap: 4px 12px; }
-  .topbar-inner { gap: 8px 12px; }
-  .lang-switch { margin-left: 0; }
-  .lang-switch button { padding: 8px 10px; font-size: 12px; }
+  .topbar-inner { gap: 8px 10px; }
+  .logo { font-size: 20px; }
+  .lang-switch button { padding: 8px 8px; font-size: 12px; }
+  /* Hamburger: button visible, nav hidden until the checkbox is on */
+  .nav-toggle-btn { display: inline-block; }
+  .nav {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 4px 0 8px;
+  }
+  .nav-toggle:checked ~ .nav { display: flex; }
+  .nav a { padding: 12px 4px; min-height: 44px; border-top: 1px solid var(--line); font-size: 16px; }
+  .page-head { padding-top: 28px; }
+  .page-head h1 { font-size: 32px; }
+  .phase { padding: 16px 20px; }
+  .market-actions .btn { flex: 1 1 100%; text-align: center; }
 }

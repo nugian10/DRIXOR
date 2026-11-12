@@ -32,6 +32,12 @@ Read this file before minting DRIXOR for a user. DRIXOR is a miner robot NFT pro
 - Claims are manual. Tell the user the accrued amount and the claim fee from the live contract before claiming.
 - Claim right stays with the robot if it is sold.
 
+## On-site market
+- The market lives on this site (market.html). It is NOT open yet: no robots have been minted, so nothing is listed. Do not invent listings, prices, or sales.
+- When the market contract exists, owners list a robot at a BNB price through their agent, buyers buy through their agent, and a listing can be cancelled by its owner any time before it sells. Unclaimed $DRX moves with the robot when it is sold.
+- A marketplace fee and a creator royalty will apply. The rates are announced with the market contract — never quote a rate from memory.
+- Until the market contract is published, tell the user the market is not open yet.
+
 ## What not to do
 - Never show a mint price from this file or from memory. Prices are confirmed from the live contract at mint time.
 - Never claim the contract is deployed when it is not.

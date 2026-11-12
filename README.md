@@ -1,6 +1,6 @@
 # DRIXOR Site (local build)
 
-Status: built and verified locally. Live at https://nugian10.github.io/DRIXOR/ (GitHub Pages), custom domain drixor.fun pending DNS.
+Status: built and verified locally. Live at https://drixor.fun/ (GitHub Pages, HTTPS on).
 
 ## Languages
 
@@ -10,6 +10,13 @@ Trilingual since 12 Nov 2026 (Bryan's decision 19:52 WIB): English (primary / de
 - The visitor's choice is saved in localStorage under key `drixor-lang` and respected on the next visit. First visit shows English. Static HTML is English, so the page stays English even if `i18n.js` fails to load; missing keys fall back to English, never blank.
 - The switcher (EN / 日本語 / 中文) is in the top bar, visible on desktop and mobile — not hidden in a menu. Buttons are min-height 44px for touch.
 - `llms.txt`, `agent-skill.md`, `agents.json`, `robots.txt`, `sitemap.xml` stay English and were not changed for this update.
+
+## Roadmap, Market, and hamburger (12 Nov 2026, Bryan's decision 20:05 WIB)
+
+- `roadmap.html` — 5 phases, honest status, no dates: Phase 1 Done (artwork, metadata, deck, live site, 3 languages, official X); Phases 2–5 Next (contracts, mint opens, mining and claims live, on-site market opens).
+- `market.html` — the market lives on this site, not on an outside marketplace. Honest status: no robots minted yet, nothing listed; the market opens after mint. Explains list / buy / cancel (via agent), that unclaimed $DRX moves with the robot, and that a marketplace fee and creator royalty will apply with rates announced with the market contract — no fake listings, no fake prices, no floor/listing numbers, no contract address. The List/Browse buttons are disabled on purpose and say so.
+- Hamburger: `nav.js` + CSS checkbox toggle. On phones (≤760px) the top bar shows logo, language switcher, and a ☰ button; the nav opens as a vertical panel below. The switcher stays in the top bar on desktop AND mobile — never inside the hamburger. The menu is a checkbox toggle, so it opens even with JavaScript off (no-JS fallback: the panel is a normal vertical link list); nav.js only adds close-on-link-click, Escape, and aria-expanded sync. The hamburger label ("Menu") is translated in all three languages.
+- New files: `roadmap.html`, `market.html`, `nav.js`. Changed: `index.html` (header/nav on all three pages now identical, links use `index.html#...`), `styles.css` (hamburger + sub-page styles + mobile polish), `i18n.js` (41 new keys per language: 75 → 116), `sitemap.xml` (roadmap.html + market.html), `llms.txt` (Roadmap + Market sections), `agent-skill.md` (on-site market section). `hero.png` is still the only image, only on index.html.
 
 ## How to open locally
 
@@ -66,6 +73,16 @@ Limitation, stated honestly: no headless browser (Chromium, Playwright) is avail
 - All 10 site files returned HTTP 200 from `python3 -m http.server` (including the new `i18n.js`).
 
 Limitation, stated honestly: the per-language visual render (Japanese/Chinese line breaks, switcher placement on a real phone) has NOT been checked visually here — no headless browser in this VM. Check each language visually in a real browser, on a phone, after pushing live.
+
+## Verification — Roadmap, Market, hamburger (12 Nov 2026, local)
+
+- `node --check i18n.js` and `node --check nav.js`: syntax OK.
+- 116 keys in each language (en/ja/zh), exact key-set match across all three: no missing, extra, or unused keys, no empty values. All `data-i18n` / `data-i18n-html` / `data-i18n-alt` / `data-i18n-aria` / `data-i18n-title` / `data-i18n-desc` keys used in the three HTML files exist in the dictionary.
+- Functional smoke test (Node, minimal DOM stub — `/tmp/drixor-verify.js`, `/tmp/drixor-func.js`): switching to ja applies ロードマップ / まだ出品はありません / メニュー (aria-label), switching to zh applies 路线图, `document.documentElement.lang` changes, `drixor-lang` is saved. nav.js loads, sets aria-expanded from the checkbox state, closes on link click and on Escape; the CSS rule `.nav-toggle:checked ~ .nav` is present and the hamburger button is hidden on desktop.
+- All 14 site files returned HTTP 200 from `python3 -m http.server` (including new `roadmap.html`, `market.html`, `nav.js`).
+- Rules re-checked: exactly 1 `<img>` tag in `index.html` and 0 in `roadmap.html` / `market.html`; 0 literal `?` in the three HTML files and 0 in any dictionary value (the 3 `?` in `i18n.js` are ternary operators in code); 0 `0.000` and 0 `0x` in the HTML files; 0 Uncommon, 0 version labels; all inter-page links resolve to existing files; HTML tag balance check passed.
+
+Limitation, stated honestly: the hamburger interaction and the phone render (390px: top bar with logo + switcher + ☰, dropdown panel, tier table scroll, phase/market cards) have NOT been checked visually here — no headless browser in this VM. The no-JS fallback is by design (checkbox toggle in CSS), but it has only been verified by code inspection. Check the hamburger and both new pages live, on a real phone, after pushing.
 
 ## Placeholders and not-final items
 
