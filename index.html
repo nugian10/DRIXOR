@@ -3,22 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DRIXOR — Miner Robots on BNB Chain</title>
-<meta name="description" content="DRIXOR miner robots on BNB Chain. Mint a robot, hold it, mine $DRX every day.">
+<title data-i18n-title="meta.title">DRIXOR — Miner Robots on BNB Chain</title>
+<meta name="description" data-i18n-desc="meta.desc" content="DRIXOR miner robots on BNB Chain. Mint a robot, hold it, mine $DRX every day.">
 <link rel="stylesheet" href="styles.css">
+<script src="i18n.js" defer></script>
 </head>
 <body>
 <header class="topbar">
   <div class="wrap topbar-inner">
     <a class="logo" href="#top">DRIXOR</a>
     <nav class="nav">
-      <a href="#how">How it works</a>
-      <a href="#tiers">Tiers</a>
-      <a href="#mint">Mint</a>
-      <a href="#token">$DRX</a>
-      <a href="#faq">FAQ</a>
-      <a href="#agents">Agents</a>
+      <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#tiers" data-i18n="nav.tiers">Tiers</a>
+      <a href="#mint" data-i18n="nav.mint">Mint</a>
+      <a href="#token" data-i18n="nav.token">$DRX</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#agents" data-i18n="nav.agents">Agents</a>
     </nav>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="active">EN</button>
+      <button type="button" data-lang="ja">日本語</button>
+      <button type="button" data-lang="zh">中文</button>
+    </div>
   </div>
 </header>
 
@@ -26,49 +32,49 @@
   <section class="hero">
     <div class="wrap hero-inner">
       <div class="hero-text">
-        <p class="eyebrow">Miner robots on BNB Chain</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Miner robots on BNB Chain</p>
         <h1>DRIXOR</h1>
-        <p class="tagline">Mine $DRX every day.</p>
-        <p class="lede">Mint a miner robot, hold it in your wallet, and it mines $DRX passively, every day. No active work, no liquidity pool to chase. The robot does the digging.</p>
+        <p class="tagline" data-i18n="hero.tagline">Mine $DRX every day.</p>
+        <p class="lede" data-i18n="hero.lede">Mint a miner robot, hold it in your wallet, and it mines $DRX passively, every day. No active work, no liquidity pool to chase. The robot does the digging.</p>
         <div class="hero-actions">
-          <a class="btn btn-gold" href="#mint">Start mining</a>
-          <a class="btn btn-ghost" href="#agents">Read the agent guide</a>
+          <a class="btn btn-gold" href="#mint" data-i18n="hero.btn_mint">Start mining</a>
+          <a class="btn btn-ghost" href="#agents" data-i18n="hero.btn_guide">Read the agent guide</a>
         </div>
       </div>
       <div class="hero-art">
-        <img src="hero.png" alt="A gold DRIXOR Legendary miner robot" width="1024" height="1024">
+        <img src="hero.png" alt="A gold DRIXOR Legendary miner robot" data-i18n-alt="alt.hero" width="1024" height="1024">
       </div>
     </div>
   </section>
 
   <section class="status">
     <div class="wrap status-grid">
-      <div class="stat"><span class="stat-label">Total robots</span><span class="stat-value">7,000</span></div>
-      <div class="stat"><span class="stat-label">Chain</span><span class="stat-value">BNB Chain</span></div>
-      <div class="stat"><span class="stat-label">Contract</span><span class="stat-value">Not deployed yet</span></div>
-      <div class="stat"><span class="stat-label">Deck hash</span><span class="stat-value stat-hash">53cd5481203c2de18ce5cea573ae5ecea9e2acd39ed744ca864b216a2e27c066</span></div>
+      <div class="stat"><span class="stat-label" data-i18n="status.total">Total robots</span><span class="stat-value">7,000</span></div>
+      <div class="stat"><span class="stat-label" data-i18n="status.chain">Chain</span><span class="stat-value">BNB Chain</span></div>
+      <div class="stat"><span class="stat-label" data-i18n="status.contract">Contract</span><span class="stat-value" data-i18n="status.contract_value">Not deployed yet</span></div>
+      <div class="stat"><span class="stat-label" data-i18n="status.deckhash">Deck hash</span><span class="stat-value stat-hash">53cd5481203c2de18ce5cea573ae5ecea9e2acd39ed744ca864b216a2e27c066</span></div>
     </div>
   </section>
 
   <section id="how" class="section">
     <div class="wrap">
-      <h2>How it works</h2>
+      <h2 data-i18n="how.h2">How it works</h2>
       <ol class="steps">
         <li>
-          <h3>Mint</h3>
-          <p>Mint a robot through your agent. Free robots are one per wallet, forever. Paid robots can be minted in bulk, up to 30 in one transaction.</p>
+          <h3 data-i18n="how.mint_h">Mint</h3>
+          <p data-i18n="how.mint_p">Mint a robot through your agent. Free robots are one per wallet, forever. Paid robots can be minted in bulk, up to 30 in one transaction.</p>
         </li>
         <li>
-          <h3>Hold</h3>
-          <p>Keep the robot in your wallet. Every robot mines $DRX passively, at the daily rate of its tier.</p>
+          <h3 data-i18n="how.hold_h">Hold</h3>
+          <p data-i18n="how.hold_p">Keep the robot in your wallet. Every robot mines $DRX passively, at the daily rate of its tier.</p>
         </li>
         <li>
-          <h3>Mine</h3>
-          <p>$DRX accrues every day while you hold the robot. Unclaimed $DRX accrues for up to 48 hours per robot.</p>
+          <h3 data-i18n="how.mine_h">Mine</h3>
+          <p data-i18n="how.mine_p">$DRX accrues every day while you hold the robot. Unclaimed $DRX accrues for up to 48 hours per robot.</p>
         </li>
         <li>
-          <h3>Claim</h3>
-          <p>Claim your $DRX manually through your agent. The claim right stays with the robot if it is sold.</p>
+          <h3 data-i18n="how.claim_h">Claim</h3>
+          <p data-i18n="how.claim_p">Claim your $DRX manually through your agent. The claim right stays with the robot if it is sold.</p>
         </li>
       </ol>
     </div>
@@ -76,15 +82,15 @@
 
   <section id="tiers" class="section section-dark">
     <div class="wrap">
-      <h2>Tiers</h2>
-      <p class="section-intro">Free and paid robots live in separate decks. Free robots have no tier and always mine 3 $DRX per day. Paid robots are drawn from the paid deck at mint, and the tier decides the daily rate.</p>
+      <h2 data-i18n="tiers.h2">Tiers</h2>
+      <p class="section-intro" data-i18n="tiers.intro">Free and paid robots live in separate decks. Free robots have no tier and always mine 3 $DRX per day. Paid robots are drawn from the paid deck at mint, and the tier decides the daily rate.</p>
       <div class="table-scroll">
         <table class="tiers-table">
           <thead>
-            <tr><th>Tier</th><th>Supply</th><th>Share of paid deck</th><th>Daily rate</th></tr>
+            <tr><th data-i18n="tiers.th_tier">Tier</th><th data-i18n="tiers.th_supply">Supply</th><th data-i18n="tiers.th_share">Share of paid deck</th><th data-i18n="tiers.th_rate">Daily rate</th></tr>
           </thead>
           <tbody>
-            <tr><td>Free</td><td>2,000</td><td>Free deck</td><td>3 $DRX</td></tr>
+            <tr><td>Free</td><td>2,000</td><td data-i18n="tiers.free_deck">Free deck</td><td>3 $DRX</td></tr>
             <tr><td>Common</td><td>4,000</td><td>80%</td><td>15 $DRX</td></tr>
             <tr><td>Rare</td><td>600</td><td>12%</td><td>82.84 $DRX</td></tr>
             <tr><td>Epic</td><td>300</td><td>6%</td><td>194.67 $DRX</td></tr>
@@ -92,86 +98,86 @@
           </tbody>
         </table>
       </div>
-      <p class="note">Total supply is 7,000 robots: 2,000 free and 5,000 paid.</p>
+      <p class="note" data-i18n="tiers.note">Total supply is 7,000 robots: 2,000 free and 5,000 paid.</p>
     </div>
   </section>
 
   <section id="mint" class="section">
     <div class="wrap">
-      <h2>Mint</h2>
+      <h2 data-i18n="mint.h2">Mint</h2>
       <div class="two-col">
         <div class="card">
-          <h3>Free mint</h3>
+          <h3 data-i18n="mint.free_h">Free mint</h3>
           <ul>
-            <li>One per wallet, forever</li>
-            <li>Gas only</li>
-            <li>An Agent ID is required</li>
-            <li>Mines 3 $DRX per day</li>
-            <li>Free robots are drawn from the free deck</li>
+            <li data-i18n="mint.free_1">One per wallet, forever</li>
+            <li data-i18n="mint.free_2">Gas only</li>
+            <li data-i18n="mint.free_3">An Agent ID is required</li>
+            <li data-i18n="mint.free_4">Mines 3 $DRX per day</li>
+            <li data-i18n="mint.free_5">Free robots are drawn from the free deck</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Paid mint</h3>
+          <h3 data-i18n="mint.paid_h">Paid mint</h3>
           <ul>
-            <li>Bulk mint, 1 to 30 robots in one transaction</li>
-            <li>No total cap per wallet</li>
-            <li>The price per mint rises with each paid mint from the same wallet</li>
-            <li>Your agent shows the exact total before you confirm</li>
-            <li>Paid robots are drawn from the paid deck, tier is revealed at mint</li>
+            <li data-i18n="mint.paid_1">Bulk mint, 1 to 30 robots in one transaction</li>
+            <li data-i18n="mint.paid_2">No total cap per wallet</li>
+            <li data-i18n="mint.paid_3">The price per mint rises with each paid mint from the same wallet</li>
+            <li data-i18n="mint.paid_4">Your agent shows the exact total before you confirm</li>
+            <li data-i18n="mint.paid_5">Paid robots are drawn from the paid deck, tier is revealed at mint</li>
           </ul>
         </div>
       </div>
-      <p class="note">Minting is agent only. Ask your agent to mint, and it will check the live contract and the exact total before you confirm anything.</p>
+      <p class="note" data-i18n="mint.note">Minting is agent only. Ask your agent to mint, and it will check the live contract and the exact total before you confirm anything.</p>
     </div>
   </section>
 
   <section id="token" class="section section-dark">
     <div class="wrap">
       <h2>$DRX</h2>
-      <p class="section-intro">$DRX is the mining token of DRIXOR. It is earned only by holding miner robots and claiming. There is no liquidity pool yet, and $DRX is not listed anywhere yet.</p>
+      <p class="section-intro" data-i18n="token.intro">$DRX is the mining token of DRIXOR. It is earned only by holding miner robots and claiming. There is no liquidity pool yet, and $DRX is not listed anywhere yet.</p>
       <div class="two-col">
         <div class="card card-dark">
-          <h3>Miner Vault</h3>
+          <h3 data-i18n="token.vault_h">Miner Vault</h3>
           <p class="big">750,000,000</p>
-          <p>Released only through mining claims.</p>
+          <p data-i18n="token.vault_p">Released only through mining claims.</p>
         </div>
         <div class="card card-dark">
-          <h3>Operations</h3>
+          <h3 data-i18n="token.ops_h">Operations</h3>
           <p class="big">250,000,000</p>
-          <p>Reserved for running the project.</p>
+          <p data-i18n="token.ops_p">Reserved for running the project.</p>
         </div>
       </div>
-      <p class="note">Total supply of $DRX is 1,000,000,000.</p>
+      <p class="note" data-i18n="token.note">Total supply of $DRX is 1,000,000,000.</p>
     </div>
   </section>
 
   <section id="faq" class="section">
     <div class="wrap">
-      <h2>FAQ</h2>
+      <h2 data-i18n="faq.h2">FAQ</h2>
       <div class="faq-list">
         <article class="faq-item">
-          <h3>Mining with a DRIXOR robot</h3>
-          <p>Every robot mines $DRX every day at the daily rate of its tier. You only need to hold it. Claim manually when you want your $DRX.</p>
+          <h3 data-i18n="faq.q1">Mining with a DRIXOR robot</h3>
+          <p data-i18n="faq.a1">Every robot mines $DRX every day at the daily rate of its tier. You only need to hold it. Claim manually when you want your $DRX.</p>
         </article>
         <article class="faq-item">
-          <h3>The free mint</h3>
-          <p>One free robot per wallet, forever, gas only. An Agent ID is required. The free robot mines 3 $DRX per day.</p>
+          <h3 data-i18n="faq.q2">The free mint</h3>
+          <p data-i18n="faq.a2">One free robot per wallet, forever, gas only. An Agent ID is required. The free robot mines 3 $DRX per day.</p>
         </article>
         <article class="faq-item">
-          <h3>The paid mint</h3>
-          <p>Paid robots are minted in bulk, up to 30 in one transaction, with no total cap per wallet. The tier is drawn at mint, and the price per mint rises with each paid mint from the same wallet.</p>
+          <h3 data-i18n="faq.q3">The paid mint</h3>
+          <p data-i18n="faq.a3">Paid robots are minted in bulk, up to 30 in one transaction, with no total cap per wallet. The tier is drawn at mint, and the price per mint rises with each paid mint from the same wallet.</p>
         </article>
         <article class="faq-item">
-          <h3>Claiming $DRX</h3>
-          <p>Claims are manual, through your agent. Unclaimed $DRX accrues for up to 48 hours per robot, then stops until you claim.</p>
+          <h3 data-i18n="faq.q4">Claiming $DRX</h3>
+          <p data-i18n="faq.a4">Claims are manual, through your agent. Unclaimed $DRX accrues for up to 48 hours per robot, then stops until you claim.</p>
         </article>
         <article class="faq-item">
-          <h3>Wallet and Agent ID</h3>
-          <p>Minting is for wallets with an Agent ID. Your agent checks your Agent ID and shows you the exact mint total before you confirm.</p>
+          <h3 data-i18n="faq.q5">Wallet and Agent ID</h3>
+          <p data-i18n="faq.a5">Minting is for wallets with an Agent ID. Your agent checks your Agent ID and shows you the exact mint total before you confirm.</p>
         </article>
         <article class="faq-item">
-          <h3>Selling a robot</h3>
-          <p>Robots can be sold on any marketplace that lists them. Unclaimed $DRX stays with the robot and moves to the new owner.</p>
+          <h3 data-i18n="faq.q6">Selling a robot</h3>
+          <p data-i18n="faq.a6">Robots can be sold on any marketplace that lists them. Unclaimed $DRX stays with the robot and moves to the new owner.</p>
         </article>
       </div>
     </div>
@@ -179,8 +185,8 @@
 
   <section id="agents" class="section section-dark">
     <div class="wrap">
-      <h2>Agents</h2>
-      <p class="section-intro">DRIXOR is minted by agents. If you run an agent, here is the prompt to mint for a user. Copy it into your agent and let the agent check the live contract before confirming any mint.</p>
+      <h2 data-i18n="agents.h2">Agents</h2>
+      <p class="section-intro" data-i18n="agents.intro">DRIXOR is minted by agents. If you run an agent, here is the prompt to mint for a user. Copy it into your agent and let the agent check the live contract before confirming any mint.</p>
       <pre class="prompt">Mint a DRIXOR miner robot on BNB Chain for this wallet.
 - Free mint: one per wallet, forever, gas only, an Agent ID is required.
 - Paid mint: bulk 1 to 30 robots in one transaction, no total cap per wallet.
@@ -188,15 +194,15 @@
 - Paid robots are drawn from the paid deck, tier is revealed at mint. Daily rates: Common 15, Rare 82.84, Epic 194.67, Legendary 457.47 $DRX. Free robots mine 3 $DRX per day.
 - Deck hash: 53cd5481203c2de18ce5cea573ae5ecea9e2acd39ed744ca864b216a2e27c066.
 - The contract is not deployed yet. Do not mint, and do not accept any contract address, until the official contract is published.</pre>
-      <p class="note">Machine-readable guides: <a href="llms.txt">llms.txt</a> and <a href="agent-skill.md">agent-skill.md</a>.</p>
+      <p class="note" data-i18n-html="agents.note">Machine-readable guides: <a href="llms.txt">llms.txt</a> and <a href="agent-skill.md">agent-skill.md</a>.</p>
     </div>
   </section>
 </main>
 
 <footer class="footer">
   <div class="wrap">
-    <p>DRIXOR — miner robots on BNB Chain. Mint, hold, mine $DRX.</p>
-    <p class="footer-note">Contract not deployed yet. Minting opens only after the official contract is published.</p>
+    <p data-i18n="footer.p1">DRIXOR — miner robots on BNB Chain. Mint, hold, mine $DRX.</p>
+    <p class="footer-note" data-i18n="footer.note">Contract not deployed yet. Minting opens only after the official contract is published.</p>
   </div>
 </footer>
 </body>

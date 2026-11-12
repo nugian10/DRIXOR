@@ -1,6 +1,15 @@
 # DRIXOR Site (local build)
 
-Status: built and verified locally. Not deployed, not published, no repo, no domain.
+Status: built and verified locally. Live at https://nugian10.github.io/DRIXOR/ (GitHub Pages), custom domain drixor.fun pending DNS.
+
+## Languages
+
+Trilingual since 12 Nov 2026 (Bryan's decision 19:52 WIB): English (primary / default), Japanese, Simplified Chinese. Pattern copied from Zigzoo.
+
+- `i18n.js` — all UI strings per language: 74 keys in each of `en`, `ja`, `zh`. Names (DRIXOR, $DRX, BNB Chain, SPACE ID, Agent ID), the deck hash, tier names (Free/Common/Rare/Epic/Legendary) and all numbers stay English in every language. The agent prompt in `<pre>` stays fully English.
+- The visitor's choice is saved in localStorage under key `drixor-lang` and respected on the next visit. First visit shows English. Static HTML is English, so the page stays English even if `i18n.js` fails to load; missing keys fall back to English, never blank.
+- The switcher (EN / 日本語 / 中文) is in the top bar, visible on desktop and mobile — not hidden in a menu. Buttons are min-height 44px for touch.
+- `llms.txt`, `agent-skill.md`, `agents.json`, `robots.txt`, `sitemap.xml` stay English and were not changed for this update.
 
 ## How to open locally
 
@@ -13,8 +22,9 @@ Then open `http://127.0.0.1:8931/` in a browser.
 
 ## Files
 
-- `index.html` — the whole site on one page, English, mobile-first
-- `styles.css` — all styling, including the mobile layout at 760px and below
+- `index.html` — the whole site on one page, mobile-first, English by default with `data-i18n` keys for all UI strings and a language switcher in the top bar
+- `styles.css` — all styling, including the mobile layout at 760px and below and the `.lang-switch` pill buttons
+- `i18n.js` — 74 translation keys per language (en / ja / zh), localStorage key `drixor-lang`, English default with fallback
 - `hero.png` — the only image on the site, a copy of the gold Legendary robot (`collection/images/legendary.png`, md5 `34ea6767d00e5ca61e906bb87a792e9a`, verified identical)
 - `llms.txt` — project summary for AI crawlers
 - `agent-skill.md` — full mint instructions for agents
@@ -46,6 +56,16 @@ Served with `python3 -m http.server` and checked with curl plus text checks. Eve
 - CSS contains a mobile media query (`@media (max-width: 760px)`) that stacks the hero, steps, and two-column sections to one column.
 
 Limitation, stated honestly: no headless browser (Chromium, Playwright) is available in this VM, so no rendered screenshot and no live visual check at 390px or desktop width was possible. The mobile layout was verified by code inspection only (single-column media query, fluid hero image, `width=device-width` viewport). Check the page visually in a real browser, on a phone, before publishing.
+
+## Verification — trilingual (12 Nov 2026, local)
+
+- `node --check i18n.js`: syntax OK.
+- 74 keys in each language (en/ja/zh), exact key-set match across all three: no missing keys, no extra keys. All 74 keys referenced in `index.html` exist in the dictionary; no dictionary key is unused. No empty values.
+- Functional smoke test (Node, minimal DOM stub — `/tmp/drixor-i18n-run.js`): switching to ja and zh applies the correct strings (tagline, nav, free mint, contract status, FAQ, agents note with links intact, hero alt), sets `document.documentElement.lang`, saves `drixor-lang` in localStorage, and marks the active switcher button. An unknown language falls back to English. No blank applied values.
+- Rules re-checked after the change: exactly 1 `<img>` tag, 0 question marks in `index.html` and 0 in any dictionary value (the 3 `?` in `i18n.js` are ternary operators in code, not text), 0 `0x` contract addresses in `index.html`, 0 Uncommon mentions. The single `0.000` hit in the whole folder is this README's own note about the price check, not a price on the site.
+- All 10 site files returned HTTP 200 from `python3 -m http.server` (including the new `i18n.js`).
+
+Limitation, stated honestly: the per-language visual render (Japanese/Chinese line breaks, switcher placement on a real phone) has NOT been checked visually here — no headless browser in this VM. Check each language visually in a real browser, on a phone, after pushing live.
 
 ## Placeholders and not-final items
 
