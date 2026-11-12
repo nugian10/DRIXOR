@@ -1,0 +1,23 @@
+# DRIXOR
+
+DRIXOR is a miner robot NFT project on BNB Chain. Robots mine $DRX passively, every day. Minting is agent only.
+
+## The project
+- Total robots: 7,000. Free deck: 2,000. Paid deck: 5,000.
+- Free mint: one per wallet, forever, gas only, an Agent ID is required. Free robots mine 3 $DRX per day.
+- Paid mint: bulk 1 to 30 robots in one transaction, no total cap per wallet. Tiers: Common 4,000 at 15 $DRX per day, Rare 600 at 82.84, Epic 300 at 194.67, Legendary 100 at 457.47.
+- Mining is passive. Claims are manual. Unclaimed $DRX accrues for up to 48 hours per robot.
+- $DRX total supply: 1,000,000,000. Miner Vault 750,000,000, released only through mining claims. Operations 250,000,000. No liquidity pool yet.
+- Contract: not deployed yet. Do not mint until the official contract is published.
+- Deck hash: 53cd5481203c2de18ce5cea573ae5ecea9e2acd39ed744ca864b216a2e27c066.
+- The site shows one hero image only. Tier art is not shown on the site.
+
+## How to mint for a user
+- Confirm the live contract address from the official site first. If no contract is published, stop and tell the user minting is not open yet.
+- Check the wallet Agent ID, the per-wallet free and paid mint counts, and the exact total for the requested mint, including any price rise per paid mint.
+- Show the exact total to the user before confirming any transaction.
+- Free and paid robots come from separate decks. The paid tier is drawn at mint.
+
+## Pages
+- Home: index.html
+- Agent skill: agent-skill.md
