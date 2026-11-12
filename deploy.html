@@ -75,7 +75,7 @@
   <section class="section hero" style="margin-top:24px">
     <p class="eyebrow">OWNER ONLY &mdash; NOT A PUBLIC PAGE</p>
     <h1 style="font-size:44px">Deploy the Contracts</h1>
-    <p class="tagline">Deploy the DRIXOR contracts to BNB Chain from your own browser wallet. No private key, no seed phrase &mdash; ever. Your wallet signs each transaction after you click. Steps 4&ndash;9 deploy the four contracts, fund the Miner Vault and link the Claim contract. Steps 10&ndash;13 deploy and open the $DRX bonding curve. Steps 14&ndash;15 deploy and fund the $DRX boost.</p>
+    <p class="tagline">Deploy the DRIXOR contracts to BNB Chain from your own browser wallet. No private key, no seed phrase &mdash; ever. Your wallet signs each transaction after you click. Steps 4&ndash;9 deploy the four contracts, fund the Miner Vault and link the Claim contract. Steps 10&ndash;13 deploy and open the $DRX bonding curve. Steps 14&ndash;15 deploy and fund the $DRX boost. Step 16 activates minting.</p>
   </section>
 
   <div class="note-box warn" style="margin-top:24px">
@@ -125,12 +125,13 @@
       <tr><th>6. Boost</th><td><code class="mono">DrixorBoost(nft, token, owner)</code><br>NFT = <code class="mono">0x09e9B9Bff5df2931818aB731B10610DE293a0dCF</code> (already live &mdash; not redeployed)<br>Token = $DRX <code class="mono">0x1EcEf07beeEf674B12A1EF67B2d794b268DB4B6e</code> (already live &mdash; not redeployed)<br>Owner = My Wallet<br>Burn 5x a robot's daily $DRX production &rarr; +90% production for 7 days. The bonus is claimed from the Boost contract itself (<code class="mono">claimBonus(tokenId)</code>); the Claim contract is untouched.<br>Boost stock: 10,000,000 $DRX from the Operations share. The stock can <strong>never</strong> be withdrawn &mdash; no withdrawal function exists.</td></tr>
       <tr><th>Royalty</th><td>EIP-2981, 5% to the Agentic Wallet on every sale.</td></tr>
       <tr><th>Supply</th><td>7,000 robots: Free 2,000 + Paid 5,000 (decks permanently separate).</td></tr>
-      <tr><th>Minting</th><td>Starts <strong>OFF</strong> (mintActive = false). It is turned on only at launch, on the owner's order.</td></tr>
+      <tr><th>Minting</th><td>Starts <strong>OFF</strong> (mintActive = false). It is turned on in Step 16, on the owner's order. The owner can turn it off again with <code>setMintActive(false)</code>.</td></tr>
     </table>
     <p class="status-line"><strong>Live gas price:</strong> <span id="gas-price">&mdash;</span></p>
     <p class="status-line"><strong>Estimated gas (steps 4&ndash;9, measured):</strong> <span id="gas-estimate">6,109,528 gas</span></p>
     <p class="status-line"><strong>Estimated gas (curve steps 10&ndash;13, measured):</strong> <span id="gas-estimate-curve">1,264,411 gas</span></p>
     <p class="status-line"><strong>Estimated gas (boost steps 14&ndash;15, measured):</strong> <span id="gas-estimate-boost">1,001,012 gas</span></p>
+    <p class="status-line"><strong>Estimated gas (activate mint, step 16, measured):</strong> <span id="gas-estimate-activate">29,855 gas</span></p>
     <p class="status-line"><strong>Estimated total cost:</strong> <span id="cost-bnb">&mdash;</span></p>
     <p class="note" id="estimate-status">Connect My Wallet first to get a live estimate. This is an estimate only &mdash; your wallet shows the exact cost before you confirm each transaction.</p>
     <button class="d-btn ghost" id="refresh-estimate-btn" type="button">Refresh estimate</button>
@@ -307,6 +308,17 @@
     <p>No activation step: the boost is usable as soon as the contract is deployed and funded. Robot owners boost through their agent (approve the boost cost, then call <code>boost(tokenId)</code>) and claim the bonus with <code>claimBonus(tokenId)</code>.</p>
   </section>
 
+  <!-- Step 16 -->
+  <section class="d-step todo" id="step-16">
+    <h2>Step 16 &mdash; Activate Mint</h2>
+    <p>Calls <code>DrixorNFT.setMintActive(true)</code> from the owner wallet. This opens minting: agents can then mint DRIXOR robots (free 1 per wallet with an Agent ID, paid bulk mint per the contract). Needs the NFT address from step 5.</p>
+    <p>The owner can turn minting off again at any time with <code>setMintActive(false)</code> &mdash; activation is reversible, unlike opening the curve (step 13) or funding the boost (step 15).</p>
+    <button class="d-btn primary" id="activate-btn" type="button" disabled>ACTIVATE MINT</button>
+    <p class="status-line" id="activate-status">Waiting for step 5.</p>
+    <p class="status-line hidden" id="activate-tx-row"><strong>Transaction:</strong> <a id="activate-tx-link" href="#" target="_blank" rel="noopener"><code class="mono" id="activate-tx"></code></a></p>
+    <p class="status-line hidden" id="activate-result"><strong>mintActive on-chain:</strong> <span id="activate-check">&mdash;</span></p>
+  </section>
+
   <div id="done-box" class="done-box hidden">
     <h2>All contracts deployed</h2>
     <p>Keep these addresses safe and send them to Muse so the site files can be updated.</p>
@@ -324,9 +336,9 @@
       <li><strong>Verify the source on BscScan</strong> for all six contracts (compiler 0.8.24, optimizer 200, MIT). The deployed bytecode must match exactly what your wallet just deployed &mdash; source verification is a check, not an audit.</li>
       <li><strong>Bonding curve (steps 10&ndash;13, separate):</strong> deploy the curve, approve and stock 10,000,000 $DRX from the Operations share, then open trading. Trading is live from <code>openTrading()</code> &mdash; and irreversible: the $DRX stock and all BNB buyers pay in can never be withdrawn by anyone.</li>
       <li><strong>Boost (steps 14&ndash;15, separate):</strong> deploy the boost and fund it with 10,000,000 $DRX from the Operations share. There is no activation step &mdash; the boost is usable as soon as it is deployed and funded. The stock can never be withdrawn by anyone.</li>
-      <li><strong>Confirm minting is still OFF</strong> &mdash; step 5 shows <code>mintActive</code> on-chain. It must be false until launch.</li>
+      <li><strong>Minting status</strong> &mdash; step 5 shows <code>mintActive</code> on-chain. It starts false; step 16 activates it when you are ready to launch.</li>
       <li><strong>Update the site</strong> with the four addresses (index.html, llms.txt, agent-skill.md, market.html) &mdash; send the addresses to Muse.</li>
-      <li><strong>Activate minting ONLY at launch</strong>, on your own order: the owner calls <code>DrixorNFT.setMintActive(true)</code>. This is a separate transaction, not a button on this page.</li>
+      <li><strong>Activate minting ONLY at launch</strong>, on your own order: use <strong>Step 16</strong> on this page &mdash; click ACTIVATE MINT (it calls <code>setMintActive(true)</code>). Minting opens as soon as the transaction confirms, and you can turn it off again with <code>setMintActive(false)</code>.</li>
     </ol>
     <p><strong>Verify commands</strong> (run from the contracts folder, after deploy):</p>
     <pre id="verify-commands">Deploy first — the commands appear here with your addresses.</pre>
@@ -364,10 +376,11 @@
   var CURVE_FEE_BPS = 250; // 2.5% on buy and sell
   var BSC_CHAIN_ID = 56n;
   var BSC_CHAIN_HEX = "0x38";
-  var MEASURED = { token: 737346, nft: 3170711, claim: 1164156, market: 908337, fund: 51729, link: 47394, curve: 1102944, approve: 46414, stock: 61028, open: 54025, boost: 949295, fundBoost: 51717 };
+  var MEASURED = { token: 737346, nft: 3170711, claim: 1164156, market: 908337, fund: 51729, link: 47394, curve: 1102944, approve: 46414, stock: 61028, open: 54025, boost: 949295, fundBoost: 51717, activate: 29855 };
   var TOTAL_MEASURED_GAS = 6109528;
   var CURVE_TOTAL_MEASURED_GAS = 1264411;
   var BOOST_TOTAL_MEASURED_GAS = 1001012;
+  var ACTIVATE_MEASURED_GAS = 29855; // setMintActive(true), measured
   var ARTIFACTS = window.DRIXOR_ARTIFACTS || null;
   var STORE_KEY = "drixor-deploy-v1";
 
@@ -375,20 +388,20 @@
   var provider = null;
   var signer = null;
   var account = null;
-  var S = loadState(); // {token:{address,tx}, nft:{...}, claim:{...}, market:{...}, fund:{tx}, link:{tx}, curve:{...}, approve:{tx}, stock:{tx}, open:{tx}, boost:{...}, fundBoost:{tx}}
+  var S = loadState(); // {token:{address,tx}, nft:{...}, claim:{...}, market:{...}, fund:{tx}, link:{tx}, curve:{...}, approve:{tx}, stock:{tx}, open:{tx}, boost:{...}, fundBoost:{tx}, activate:{tx}}
 
   function loadState() {
     try {
       var raw = localStorage.getItem(STORE_KEY);
-      if (!raw) return { token: null, nft: null, claim: null, market: null, fund: null, link: null, curve: null, approve: null, stock: null, open: null, boost: null, fundBoost: null };
+      if (!raw) return { token: null, nft: null, claim: null, market: null, fund: null, link: null, curve: null, approve: null, stock: null, open: null, boost: null, fundBoost: null, activate: null };
       var p = JSON.parse(raw);
       return {
         token: p.token || null, nft: p.nft || null, claim: p.claim || null,
         market: p.market || null, fund: p.fund || null, link: p.link || null,
         curve: p.curve || null, approve: p.approve || null, stock: p.stock || null, open: p.open || null,
-        boost: p.boost || null, fundBoost: p.fundBoost || null
+        boost: p.boost || null, fundBoost: p.fundBoost || null, activate: p.activate || null
       };
-    } catch (e) { return { token: null, nft: null, claim: null, market: null, fund: null, link: null, curve: null, approve: null, stock: null, open: null, boost: null, fundBoost: null }; }
+    } catch (e) { return { token: null, nft: null, claim: null, market: null, fund: null, link: null, curve: null, approve: null, stock: null, open: null, boost: null, fundBoost: null, activate: null }; }
   }
   function saveState() {
     try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch (e) { /* storage unavailable */ }
@@ -417,7 +430,7 @@
   function fmtBnb(wei) { try { return ethers.formatEther(wei); } catch (e) { return "?"; } }
   function sameAddr(a, b) { return !!a && !!b && a.toLowerCase() === b.toLowerCase(); }
 
-  var STEP_OF = { token: 4, nft: 5, claim: 6, market: 7, fund: 8, link: 9, curve: 10, approve: 11, stock: 12, open: 13, boost: 14, fundBoost: 15 };
+  var STEP_OF = { token: 4, nft: 5, claim: 6, market: 7, fund: 8, link: 9, curve: 10, approve: 11, stock: 12, open: 13, boost: 14, fundBoost: 15, activate: 16 };
 
   // ---- Page boot ----
   function boot() {
@@ -490,6 +503,14 @@
       if (S.fundBoost.tx) { $("fund-boost-tx-link").href = bscscanTx(S.fundBoost.tx); show("fund-boost-tx-row"); }
       setText("fund-boost-status", "Boost funded \u2713 — 10,000,000 $DRX in the Boost contract.");
       setStep(15, "done");
+    }
+    if (S.activate) {
+      setText("activate-tx", S.activate.tx || "—");
+      if (S.activate.tx) { $("activate-tx-link").href = bscscanTx(S.activate.tx); show("activate-tx-row"); }
+      setText("activate-check", "TRUE \u2713 — minting is ON");
+      show("activate-result");
+      setText("activate-status", "Mint is ACTIVE \u2713 — agents can now mint DRIXOR robots.");
+      setStep(16, "done");
     }
     checkDone();
   }
@@ -687,6 +708,7 @@
     $("stock-btn").disabled = !(provider && signer && ownerOk() && S.curve && S.approve && !S.stock);
     $("open-btn").disabled = !(provider && signer && ownerOk() && S.curve && S.stock && !S.open);
     $("fund-boost-btn").disabled = !(provider && signer && ownerOk() && S.token && S.boost && !S.fundBoost);
+    $("activate-btn").disabled = !(provider && signer && ownerOk() && S.nft && !S.activate);
     // Step states for not-yet-done steps whose prerequisites are met.
     if (!S.token && canDeploy("token")) setStep(4, "active");
     if (!S.nft && canDeploy("nft")) setStep(5, "active");
@@ -700,6 +722,7 @@
     if (!S.open && provider && signer && ownerOk() && S.curve && S.stock) setStep(13, "active");
     if (!S.boost && provider && signer && ownerOk() && S.token && S.nft) setStep(14, "active");
     if (!S.fundBoost && provider && signer && ownerOk() && S.token && S.boost) setStep(15, "active");
+    if (!S.activate && provider && signer && ownerOk() && S.nft) setStep(16, "active");
   }
 
   // ---- Steps 4-7: deploy ----
@@ -1053,6 +1076,56 @@
     }
   }
 
+  // ---- Step 16: activate mint ----
+  async function activateMint() {
+    if (!provider || !signer || !ownerOk() || !S.nft || S.activate) {
+      note("Activation is not ready yet — connect My Wallet and finish step 5 first.", "warn");
+      return;
+    }
+    var btn = $("activate-btn");
+    btn.disabled = true;
+    setText("activate-status", "Checking mintActive on-chain\u2026");
+    try {
+      var nft = new ethers.Contract(S.nft.address, ARTIFACTS.nft.abi, signer);
+      var already = await nft.mintActive();
+      if (already) {
+        setText("activate-check", "TRUE \u2713 — minting is ON");
+        show("activate-result");
+        S.activate = { tx: null };
+        saveState();
+        setText("activate-status", "Mint is ACTIVE \u2713 — agents can now mint DRIXOR robots.");
+        setStep(16, "done");
+        note("Minting was already active on-chain. No new transaction was sent.", "ok");
+        updateButtons();
+        checkDone();
+        return;
+      }
+      setText("activate-status", "Sending setMintActive(true)\u2026 confirm it in your wallet.");
+      var tx = await nft.setMintActive(true);
+      setText("activate-tx", tx.hash);
+      $("activate-tx-link").href = bscscanTx(tx.hash);
+      show("activate-tx-row");
+      setText("activate-status", "Transaction sent. Waiting for confirmation\u2026");
+      await tx.wait();
+      var active = await nft.mintActive();
+      if (!active) throw new Error("mintActive is still false on-chain. Check BscScan.");
+      setText("activate-check", "TRUE \u2713 — minting is ON");
+      show("activate-result");
+      S.activate = { tx: tx.hash };
+      saveState();
+      setText("activate-status", "Mint is ACTIVE \u2713 — agents can now mint DRIXOR robots.");
+      setStep(16, "done");
+      note("Minting is now ACTIVE. Agents can mint DRIXOR robots. You can turn it off again with setMintActive(false).", "ok");
+      updateButtons();
+      checkDone();
+    } catch (e) {
+      btn.disabled = false;
+      setText("activate-status", "Activation failed or was rejected in your wallet: " + (e && e.message ? e.message : e));
+      note("Activation did not complete: " + (e && e.message ? e.message : e) + ". Minting is still OFF. You can try again.", "error");
+      updateButtons();
+    }
+  }
+
   // ---- Done: summary + verify commands ----
   function checkDone() {
     if (!(S.token && S.nft && S.claim && S.market && S.fund && S.link)) return;
@@ -1104,6 +1177,7 @@
     $("stock-btn").addEventListener("click", stockCurve);
     $("open-btn").addEventListener("click", openCurve);
     $("fund-boost-btn").addEventListener("click", fundBoost);
+    $("activate-btn").addEventListener("click", activateMint);
     $("use-token-btn").addEventListener("click", function () { useExisting("token"); });
     $("use-nft-btn").addEventListener("click", function () { useExisting("nft"); });
     $("use-claim-btn").addEventListener("click", function () { useExisting("claim"); });
