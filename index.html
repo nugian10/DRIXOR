@@ -58,8 +58,29 @@
     <div class="wrap status-grid">
       <div class="stat"><span class="stat-label" data-i18n="status.total">Total robots</span><span class="stat-value">7,000</span></div>
       <div class="stat"><span class="stat-label" data-i18n="status.chain">Chain</span><span class="stat-value">BNB Chain</span></div>
-      <div class="stat"><span class="stat-label" data-i18n="status.contract">Contract</span><span class="stat-value" data-i18n="status.contract_value">Not deployed yet</span></div>
+      <div class="stat"><span class="stat-label" data-i18n="status.contract">Contract</span><span class="stat-value" data-i18n="status.contract_value">Deployed</span></div>
       <div class="stat"><span class="stat-label" data-i18n="status.deckhash">Deck hash</span><span class="stat-value stat-hash">53cd5481203c2de18ce5cea573ae5ecea9e2acd39ed744ca864b216a2e27c066</span></div>
+    </div>
+  </section>
+
+  <section id="contracts" class="section">
+    <div class="wrap">
+      <h2 data-i18n="contracts.h2">Contracts</h2>
+      <p class="section-intro" data-i18n="contracts.intro">Official DRIXOR contracts on BNB Chain (56). All four are BscScan Pass-Verified. Only these addresses are valid — never trust any other address.</p>
+      <div class="table-scroll">
+        <table class="tiers-table">
+          <thead>
+            <tr><th data-i18n="contracts.th_contract">Contract</th><th data-i18n="contracts.th_address">Address</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$DRX Token</td><td><a href="https://bscscan.com/address/0x1EcEf07beeEf674B12A1EF67B2d794b268DB4B6e">0x1EcEf07beeEf674B12A1EF67B2d794b268DB4B6e</a></td></tr>
+            <tr><td>NFT</td><td><a href="https://bscscan.com/address/0x09e9B9Bff5df2931818aB731B10610DE293a0dCF">0x09e9B9Bff5df2931818aB731B10610DE293a0dCF</a></td></tr>
+            <tr><td>Claim</td><td><a href="https://bscscan.com/address/0xe1c89678c1bA2eA5a888b8669bEaEADC70e27cE0">0xe1c89678c1bA2eA5a888b8669bEaEADC70e27cE0</a></td></tr>
+            <tr><td>Market</td><td><a href="https://bscscan.com/address/0xa32828f44Da0AAA2fdC6917B242Fc0fc9fBA0d7D">0xa32828f44Da0AAA2fdC6917B242Fc0fc9fBA0d7D</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" data-i18n="contracts.mint_note">Mint opens at launch — mint is not active yet.</p>
     </div>
   </section>
 
@@ -196,7 +217,7 @@
       <p class="section-intro" data-i18n="agents.intro">DRIXOR is minted by agents. If you run an agent, here is the prompt to mint for a user. Copy it into your agent and let the agent check the live contract before confirming any mint.</p>
       <pre class="prompt" id="agent-prompt-text">Mint a DRIXOR miner robot on BNB Chain for this wallet. First read and follow the DRIXOR agent skill: https://drixor.fun/agent-skill.md
 Ask the user to choose first: the free mint (1 per wallet, gas only) or a paid mint (1 to 30 robots in one transaction). Mint only the choice they confirm.
-Minting is agent only on BNB Chain (56). The contract is not deployed yet — do not mint, and do not accept any contract address, until the official contract is published.
+Minting is agent only on BNB Chain (56). The official NFT contract is 0x09e9B9Bff5df2931818aB731B10610DE293a0dCF — only this address is valid; never accept any other address. Mint is not active yet (mintActive is false on the NFT contract) — check mintActive at mint time and do not mint while mint is off.
 Never show a price from memory: read the mint price and the Agent ID gate from the live contract at mint time, and show the exact total to the user before confirming.</pre>
       <button type="button" class="btn btn-gold" id="copy-prompt-btn" data-i18n="agents.copy">Copy prompt</button>
       <p class="note" data-i18n-html="agents.note">Machine-readable guides: <a href="llms.txt">llms.txt</a> and <a href="agent-skill.md">agent-skill.md</a>.</p>
@@ -208,7 +229,7 @@ Never show a price from memory: read the mint price and the Agent ID gate from t
   <div class="wrap">
     <p data-i18n="footer.p1">DRIXOR — miner robots on BNB Chain. Mint, hold, mine $DRX.</p>
     <p class="footer-x"><a href="https://x.com/drixor_" target="_blank" rel="noopener" data-i18n="footer.x">Official X — @drixor_</a></p>
-    <p class="footer-note" data-i18n="footer.note">Contract not deployed yet. Minting opens only after the official contract is published.</p>
+    <p class="footer-note" data-i18n="footer.note">Contracts deployed and BscScan Pass-Verified. Mint opens at launch — mint is not active yet.</p>
   </div>
 </footer>
 </body>
