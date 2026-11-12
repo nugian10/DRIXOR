@@ -7,7 +7,7 @@ Read this file before minting DRIXOR for a user. DRIXOR is a miner robot NFT pro
 This is the whole prompt a user copies from the site and pastes to their agent. It is deliberately short — the rules live in this file, not in the prompt.
 
 ```
-Mint a DRIXOR miner robot on BNB Chain for this wallet. First read and follow the DRIXOR agent skill: https://drixor.fun/agent-skill.md
+Mint a DRIXOR miner robot on BNB Chain for this wallet. Continue reading the DRIXOR agent skill: https://drixor.fun/agent-skill.md
 ```
 
 ## Project facts

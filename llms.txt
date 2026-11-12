@@ -14,7 +14,7 @@ DRIXOR is a miner robot NFT project on BNB Chain. Robots mine $DRX passively, ev
 - Official X: https://x.com/drixor_
 
 ## Copy-paste mint prompt
-Mint a DRIXOR miner robot on BNB Chain for this wallet. First read and follow the DRIXOR agent skill: https://drixor.fun/agent-skill.md
+Mint a DRIXOR miner robot on BNB Chain for this wallet. Continue reading the DRIXOR agent skill: https://drixor.fun/agent-skill.md
 
 ## How to mint for a user
 - Ask the user to choose first: the free mint or a paid mint (and how many, if paid). Never assume the choice — ask if it was not stated.
