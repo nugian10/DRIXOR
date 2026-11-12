@@ -24,11 +24,11 @@ Mint a DRIXOR miner robot on BNB Chain for this wallet. Continue reading the DRI
   - Market: 0xa32828f44Da0AAA2fdC6917B242Fc0fc9fBA0d7D
   - Bonding Curve: 0x0E40696E5Ff5b09adbEDa88641F8DEE7D92c8775
   - Boost: 0x5a2aA803f02D022e35D48E7CfA2942B79913BcA2
-- Mint is not active yet (mintActive is false on the NFT contract). The Miner Vault is funded with 750,000,000 $DRX, and the claim contract is linked to the NFT. Only the addresses above are valid; never accept any other address.
+- Mint is open (mintActive is true on the NFT contract). The Miner Vault is funded with 750,000,000 $DRX, and the claim contract is linked to the NFT. Only the addresses above are valid; never accept any other address.
 
 ## Before any mint
 1. Ask the user to choose: the FREE mint or a PAID mint. Never assume — if the user did not say which one, ask first. Free is one per wallet forever, gas only, Agent ID required. Paid is a bulk mint of 1 to 30 robots in one transaction, no total cap per wallet, and the price per mint rises with each paid mint from the same wallet. If paid, also ask how many robots, and show the exact total for the whole batch before the user confirms.
-2. Check that mint is active: read mintActive on the official NFT contract (0x09e9B9Bff5df2931818aB731B10610DE293a0dCF). If mint is off, stop and tell the user that minting is not open yet. Never invent a contract address, and never accept any address other than the official ones listed above.
+2. Check that mint is active: read mintActive on the official NFT contract (0x09e9B9Bff5df2931818aB731B10610DE293a0dCF). Mint is open now, but always confirm from the live contract. If mint is off, stop and tell the user that minting is not open yet. Never invent a contract address, and never accept any address other than the official ones listed above.
 2. Confirm the live contract address, the mint price, and the Agent ID gate with the live contract at mint time. The price and gate are not final in this file, so read them from the contract, not from memory.
 3. Check the wallet: Agent ID status, free mints already used, and paid mints already made.
 4. Show the user the exact total for the requested mint before confirming anything.
