@@ -1,14 +1,21 @@
+/* DRIXOR — industrial mining look.
+   Charcoal / gunmetal + molten-orange accent. No gold, no blue.
+   Sharp 6px corners, uppercase headings, monospace technical numbers.
+   Hazard stripes appear only twice: under the hero, above the footer. */
+
 :root {
-  --bg: #0b0f1a;
-  --bg-2: #121828;
-  --card: #16213a;
-  --card-dark: #1a2542;
-  --line: #26314d;
-  --text: #e8ecf4;
-  --muted: #a8b2c7;
-  --gold: #f5c542;
-  --gold-dark: #d9a91f;
-  --blue: #4aa8ff;
+  --bg: #17191d;
+  --bg-2: #1d2026;
+  --card: #20242a;
+  --card-dark: #262b33;
+  --line: #343a44;
+  --text: #e8e9eb;
+  --muted: #a9adb6;
+  --steel: #c8ccd4;
+  --accent: #ff7a1a;
+  --accent-dark: #e56a0a;
+  --link: #ffa04d;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -30,18 +37,18 @@ body {
   padding: 0 20px;
 }
 
-a { color: var(--blue); }
+a { color: var(--link); }
 
 h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
 
-h2 { font-size: 30px; }
-h3 { font-size: 20px; }
+h2 { font-size: 30px; text-transform: uppercase; letter-spacing: 1.5px; }
+h3 { font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
 .topbar {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(11, 15, 26, 0.95);
+  background: #17191d;
   border-bottom: 1px solid var(--line);
 }
 
@@ -57,7 +64,7 @@ h3 { font-size: 20px; }
 }
 
 .logo {
-  color: var(--gold);
+  color: var(--accent);
   font-weight: 800;
   font-size: 22px;
   letter-spacing: 2px;
@@ -70,9 +77,11 @@ h3 { font-size: 20px; }
   color: var(--text);
   text-decoration: none;
   font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.nav a:hover { color: var(--gold); }
+.nav a:hover { color: var(--accent); }
 
 .lang-switch {
   display: inline-flex;
@@ -85,7 +94,7 @@ h3 { font-size: 20px; }
   background: transparent;
   color: var(--text);
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 6px;
   padding: 8px 12px;
   font-size: 13px;
   font-weight: 700;
@@ -94,13 +103,24 @@ h3 { font-size: 20px; }
   font-family: inherit;
 }
 
-.lang-switch button:hover { border-color: var(--gold); color: var(--gold); }
+.lang-switch button:hover { border-color: var(--accent); color: var(--accent); }
 
-.lang-switch button.active { background: var(--gold); border-color: var(--gold); color: #1a1400; }
+.lang-switch button.active { background: var(--accent); border-color: var(--accent); color: #1a0e00; }
 
 .hero {
-  background: radial-gradient(ellipse at 70% 20%, #2a2410 0%, var(--bg) 60%);
-  border-bottom: 1px solid var(--line);
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 2px 14px),
+    radial-gradient(ellipse at 70% 15%, rgba(255, 122, 26, 0.16) 0%, transparent 55%),
+    linear-gradient(180deg, #1d2026 0%, var(--bg) 100%);
+  border-bottom: none;
+}
+
+/* Hazard stripe under the hero — one of only two on the site. */
+.hero::after {
+  content: "";
+  display: block;
+  height: 6px;
+  background: repeating-linear-gradient(45deg, var(--accent) 0 12px, #17191d 12px 24px);
 }
 
 .hero-inner {
@@ -113,7 +133,7 @@ h3 { font-size: 20px; }
 }
 
 .eyebrow {
-  color: var(--gold);
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 13px;
@@ -122,7 +142,8 @@ h3 { font-size: 20px; }
 }
 
 .hero h1 {
-  font-size: 64px;
+  font-size: 72px;
+  text-transform: uppercase;
   letter-spacing: 4px;
   margin-bottom: 4px;
 }
@@ -130,8 +151,10 @@ h3 { font-size: 20px; }
 .tagline {
   font-size: 24px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--accent);
   margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .lede { color: var(--muted); margin: 0 0 24px; }
@@ -142,23 +165,25 @@ h3 { font-size: 20px; }
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 16px;
+  border-radius: 6px;
   border: 1px solid var(--line);
 }
 
 .btn {
   display: inline-block;
   padding: 12px 22px;
-  border-radius: 10px;
+  border-radius: 6px;
   font-weight: 700;
   text-decoration: none;
   font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.btn-gold { background: var(--gold); color: #1a1400; }
-.btn-gold:hover { background: var(--gold-dark); }
+.btn-gold { background: var(--accent); color: #1a0e00; }
+.btn-gold:hover { background: var(--accent-dark); }
 .btn-ghost { border: 1px solid var(--line); color: var(--text); }
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
 .status { border-bottom: 1px solid var(--line); }
 
@@ -179,11 +204,11 @@ h3 { font-size: 20px; }
   margin-bottom: 4px;
 }
 
-.stat-value { font-weight: 700; font-size: 18px; }
+.stat-value { font-weight: 700; font-size: 18px; font-family: var(--mono); }
 
 .stat-hash {
   font-size: 12px;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-family: var(--mono);
   word-break: break-all;
 }
 
@@ -205,7 +230,7 @@ h3 { font-size: 20px; }
 .steps li {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 20px;
   counter-increment: step;
 }
@@ -217,11 +242,12 @@ h3 { font-size: 20px; }
   height: 34px;
   line-height: 34px;
   text-align: center;
-  border-radius: 50%;
-  background: var(--gold);
-  color: #1a1400;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #1a0e00;
   font-size: 18px;
   margin-bottom: 12px;
+  font-family: var(--mono);
 }
 
 .steps p { color: var(--muted); margin: 0; }
@@ -232,7 +258,7 @@ h3 { font-size: 20px; }
   width: 100%;
   border-collapse: collapse;
   background: var(--card);
-  border-radius: 12px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -243,9 +269,13 @@ h3 { font-size: 20px; }
   border-bottom: 1px solid var(--line);
 }
 
-.tiers-table th { color: var(--gold); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+.tiers-table th { color: var(--accent); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+/* Supply, share, and daily rate in monospace — the tier name stays normal. */
+.tiers-table td:nth-child(2),
+.tiers-table td:nth-child(3),
+.tiers-table td:nth-child(4) { font-family: var(--mono); }
 .tiers-table tr:last-child td { border-bottom: none; }
-.tiers-table tbody tr:hover { background: #1c2947; }
+.tiers-table tbody tr:hover { background: #2a2f37; }
 
 .note { color: var(--muted); font-size: 15px; margin-top: 16px; }
 
@@ -259,7 +289,7 @@ h3 { font-size: 20px; }
 .card {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 24px;
 }
 
@@ -272,8 +302,9 @@ h3 { font-size: 20px; }
 .big {
   font-size: 30px;
   font-weight: 800;
-  color: var(--gold);
+  color: var(--accent);
   margin: 0 0 8px;
+  font-family: var(--mono);
 }
 
 .faq-list { display: grid; gap: 16px; margin-top: 24px; }
@@ -281,16 +312,16 @@ h3 { font-size: 20px; }
 .faq-item {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 20px 24px;
 }
 
 .faq-item p { color: var(--muted); margin: 0; }
 
 .prompt {
-  background: #070a12;
+  background: #101215;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 20px;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -305,10 +336,19 @@ h3 { font-size: 20px; }
   color: var(--muted);
 }
 
+/* Hazard stripe above the footer — the second of only two on the site. */
+.footer::before {
+  content: "";
+  display: block;
+  height: 6px;
+  margin-bottom: 32px;
+  background: repeating-linear-gradient(45deg, var(--accent) 0 12px, #17191d 12px 24px);
+}
+
 .footer-note { font-size: 14px; }
 
 .footer-x { margin-top: 12px; }
-.footer-x a { color: var(--gold); text-decoration: none; font-weight: 600; }
+.footer-x a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .footer-x a:hover { text-decoration: underline; }
 
 /* Hamburger (mobile only). The toggle is a checkbox, so the menu opens
@@ -321,7 +361,7 @@ h3 { font-size: 20px; }
   background: transparent;
   color: var(--text);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 6px;
   min-width: 44px;
   min-height: 44px;
   font-size: 22px;
@@ -333,18 +373,18 @@ h3 { font-size: 20px; }
   text-align: center;
 }
 
-.nav-toggle-btn:hover { border-color: var(--gold); color: var(--gold); }
+.nav-toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 /* Sub-pages */
 .page-head { padding-top: 40px; }
-.page-head h1 { font-size: 40px; margin-bottom: 8px; }
+.page-head h1 { font-size: 40px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2px; }
 
 .phase-list { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 16px; }
 
 .phase {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 20px 24px;
 }
 
@@ -357,18 +397,18 @@ h3 { font-size: 20px; }
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border-radius: 999px;
+  border-radius: 6px;
   padding: 4px 12px;
   margin-bottom: 10px;
 }
 
-.phase-done .phase-status { background: var(--gold); color: #1a1400; }
+.phase-done .phase-status { background: var(--accent); color: #1a0e00; }
 .phase-next .phase-status { border: 1px solid var(--line); color: var(--muted); }
 
 .market-status {
   background: var(--card);
-  border: 1px solid var(--gold);
-  border-radius: 12px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
   padding: 20px 24px;
   margin: 24px 0;
 }
@@ -387,9 +427,9 @@ h3 { font-size: 20px; }
 
 @media (max-width: 760px) {
   .hero-inner { grid-template-columns: 1fr; padding-top: 32px; padding-bottom: 32px; }
-  .hero h1 { font-size: 44px; }
+  .hero h1 { font-size: 48px; }
   .tagline { font-size: 20px; }
-  .hero-art img { border-radius: 12px; }
+  .hero-art img { border-radius: 6px; }
   .status-grid { grid-template-columns: 1fr 1fr; }
   .steps { grid-template-columns: 1fr; }
   .two-col { grid-template-columns: 1fr; }
